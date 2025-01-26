@@ -16,7 +16,7 @@ export default function LoginScreen({ navigation }) {
     >
       <View style={styles.container}>
         {/* Name of Delivery Application */}
-        <Text style={styles.appName}>NAME OF DELIVERY</Text>
+        <Text style={styles.appName}>Everything Together</Text>
 
         {/* Delivery Guy Image */}
         <Image
@@ -31,13 +31,13 @@ export default function LoginScreen({ navigation }) {
 
         {/* Phone and Gmail Icons */}
         <View style={styles.iconContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.iconWrapper}>
             <Image
               source={require("../assets/phone.png")}
               style={styles.icon}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.iconWrapper}>
             <Image
               source={require("../assets/gmail.png")}
               style={styles.icon}
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     resizeMode: "cover", // Ensures the image covers the entire screen
+    justifyContent: "center",
   },
   container: {
     flex: 1,
@@ -72,14 +73,15 @@ const styles = StyleSheet.create({
     fontFamily: "Jolly Lodger", // Ensure the font is loaded in the app
     color: "#D4E9F0",
     marginBottom: 20,
+    textAlign: "center",
   },
   deliveryGuyImage: {
-    width: 150,
-    height: 150, // Adjust size as needed
+    width: 200,
+    height: 200, // Adjust size as needed
     marginBottom: 20,
   },
   loginText: {
-    fontSize: 26,
+    fontSize: 20,
     fontFamily: "Jersey 25", // Ensure the font is loaded in the app
     color: "#E1E1E1",
     textAlign: "center",
@@ -87,17 +89,19 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
-    width: "50%", // Adjust width for icon spacing
     marginBottom: 20,
   },
+  iconWrapper: {
+    marginHorizontal: 10,
+  },
   icon: {
-    width: 50,
-    height: 50, // Adjust size as needed
+    width: 60,
+    height: 60, // Adjust size as needed
   },
   noRegistrationText: {
-    fontSize: 26,
+    fontSize: 20,
     fontFamily: "Jersey 25", // Ensure the font is loaded in the app
     color: "#FFFFFF",
     textAlign: "center",
