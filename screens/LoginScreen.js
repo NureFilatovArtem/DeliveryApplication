@@ -59,8 +59,9 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     resizeMode: "cover", // Ensures the image covers the entire screen
-    justifyContent: "center",
   },
   container: {
     flex: 1,
@@ -69,23 +70,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   appName: {
-    fontSize: 48,
+    fontSize: 56,
     fontFamily: "Jolly Lodger", // Ensure the font is loaded in the app
     color: "#D4E9F0",
-    marginBottom: 20,
+    marginBottom: 30,
     textAlign: "center",
   },
   deliveryGuyImage: {
     width: 200,
-    height: 200, // Adjust size as needed
+    height: 200,
     marginBottom: 20,
   },
   loginText: {
-    fontSize: 20,
+    fontSize: 24 ,
     fontFamily: "Jersey 25", // Ensure the font is loaded in the app
     color: "#E1E1E1",
     textAlign: "center",
-    marginBottom: 20,
+    marginBottom: 30,
   },
   iconContainer: {
     flexDirection: "row",
@@ -97,14 +98,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   icon: {
-    width: 60,
-    height: 60, // Adjust size as needed
+    width: 80,
+    height: 80,
   },
   noRegistrationText: {
-    fontSize: 20,
-    fontFamily: "Jersey 25", // Ensure the font is loaded in the app
+    fontSize: 22,
+    fontFamily: "Jersey 25",
     color: "#FFFFFF",
     textAlign: "center",
-    marginTop: 20,
+    marginTop: 30,
+    textDecorationLine: "underline", // Add underline
   },
 });

@@ -10,11 +10,19 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import LoadingScreen from "./screens/LoadingScreen";
 
 // Create Stack Navigator
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  if (!fontsLoaded) {
+    return <LoadingScreen onFinish={() => setFontsLoaded(true)} />;
+  }
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
@@ -23,6 +31,7 @@ export default function App() {
           <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="LoadingScreen" component={LoadingScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
