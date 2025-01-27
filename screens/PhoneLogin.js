@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-export default function LoginScreen({ navigation }) {
+export default function PhoneLogin({ navigation }) {
   return (
     <ImageBackground
       source={require("../assets/background.png")}
@@ -31,19 +31,13 @@ export default function LoginScreen({ navigation }) {
 
         {/* Phone and Gmail Icons */}
         <View style={styles.iconContainer}>
-          <TouchableOpacity
-            style={styles.iconWrapper}
-            onPress={() => navigation.navigate("PhoneLogin")}
-          >
+          <TouchableOpacity style={styles.iconWrapper}>
             <Image
               source={require("../assets/phone.png")}
               style={styles.icon}
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.iconWrapper}
-            onPress={() => navigation.navigate("EmailLogin")}
-          >
+          <TouchableOpacity style={styles.iconWrapper}>
             <Image
               source={require("../assets/gmail.png")}
               style={styles.icon}
@@ -57,7 +51,7 @@ export default function LoginScreen({ navigation }) {
         </Text>
 
         {/* Log in without Registration */}
-        <TouchableOpacity onPress={() => navigation.navigate("GuestLogin")}>
+        <TouchableOpacity>
           <Text style={styles.noRegistrationText}>
             LOG IN WITHOUT REGISTRATION
           </Text>
@@ -90,12 +84,12 @@ const styles = StyleSheet.create({
   deliveryGuyImage: {
     width: 200,
     height: 200,
-    marginBottom: 200,
+    marginBottom: 100, // Adjusted margin
   },
   loginText: {
-    fontSize: 24 ,
-    fontFamily: "Jersey 25", // Используем шрифт
-    fontWeight: "bold", // Bold style for the text
+    fontSize: 24,
+    fontFamily: "Jersey 25",
+    fontWeight: "bold",
     color: "#E1E1E1",
     textAlign: "center",
     marginBottom: 30,
@@ -113,15 +107,22 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
   },
+  additionalText: {
+    fontSize: 18,
+    fontFamily: "Jersey 25",
+    color: "#E1E1E1",
+    textAlign: "center",
+    marginBottom: 20,
+  },
   noRegistrationText: {
-    fontSize: 26, // Размер текста из макета
-    fontFamily: "Jersey 25", // Используем шрифт
-    fontWeight: "bold", // Bold style for the text
-    color: "#FFFFFF", // Белый цвет текста
-    textAlign: "center", // Центровка
-    lineHeight: 26, // Межстрочный интервал из макета
+    fontSize: 26,
+    fontFamily: "Jersey 25",
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    textAlign: "center",
+    lineHeight: 26,
     marginTop: 30,
-    textDecorationLine: "none", // Убрать подчеркивание, если нужно
-    opacity: 0.4, // Прозрачность текста
-},
+    textDecorationLine: "none",
+    opacity: 0.4,
+  },
 });

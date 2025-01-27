@@ -1,27 +1,41 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { SafeAreaView } from "react-native-safe-area-context";
+import * as Font from "expo-font";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+
+
 // Import Screens
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import LoadingScreen from "./screens/LoadingScreen";
+import PhoneLogin  from "./screens/PhoneLogin";
 
 // Create Stack Navigator
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  if (!fontsLoaded) {
-    return <LoadingScreen onFinish={() => setFontsLoaded(true)} />;
-  }
+  useEffect(() => {
+    async function loadFonts() {
+      console.log("Загрузка шрифтов началась");
+      try {
+        await Font.loadAsync({
+          "Jolly Lodger": require("./assets/fonts/JollyLodger-Regular.ttf"),
+          "Jersey 25": require("./assets/fonts/Jersey25-Regular.ttf"),
+        });
+        console.log("Шрифты успешно загружены");
+        setFontsLoaded(true);
+      } catch (error) {
+        console.error("Ошибка загрузки шрифтов:", error);
+      }
+    }
+    loadFonts();
+  }, []);
 
   return (
     <SafeAreaProvider>
@@ -31,7 +45,7 @@ export default function App() {
           <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="LoadingScreen" component={LoadingScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="PhoneLogin" component={PhoneLogin} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
