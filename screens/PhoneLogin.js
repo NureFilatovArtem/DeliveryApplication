@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,9 +6,12 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  TextInput,
 } from "react-native";
 
 export default function PhoneLogin({ navigation }) {
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   return (
     <ImageBackground
       source={require("../assets/background.png")}
@@ -25,36 +28,29 @@ export default function PhoneLogin({ navigation }) {
         />
 
         {/* Log in Text */}
-        <Text style={styles.loginText}>
-          LOG IN WITH YOUR PHONE{"\n"}NUMBER OR EMAIL
-        </Text>
+        <Text style={styles.loginText}>Enter your phone number</Text>
 
-        {/* Phone and Gmail Icons */}
-        <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.iconWrapper}>
-            <Image
-              source={require("../assets/phone.png")}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconWrapper}>
-            <Image
-              source={require("../assets/gmail.png")}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
+        {/* Phone Number Input */}
+        <View style={styles.phoneInputContainer}>
+          <View style={styles.phoneCode}>
+            <Text style={styles.phoneCodeText}>+32</Text>
+          </View>
+          <TextInput
+            style={styles.phoneNumberInput}
+            placeholder="000 00 00"
+            placeholderTextColor="#E1E1E1"
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+            keyboardType="phone-pad"
+          />
         </View>
 
         {/* Additional Text */}
-        <Text style={styles.additionalText}>
-          OR CONTINUE WITH SOCIAL MEDIA
-        </Text>
+        <Text style={styles.additionalText}>OR CONTINUE WITH GOOGLE</Text>
 
-        {/* Log in without Registration */}
-        <TouchableOpacity>
-          <Text style={styles.noRegistrationText}>
-            LOG IN WITHOUT REGISTRATION
-          </Text>
+        {/* CONTINUE Button */}
+        <TouchableOpacity style={styles.continueButton}>
+          <Text style={styles.continueButtonText}>CONTINUE</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
@@ -66,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    resizeMode: "cover", // Ensures the image covers the entire screen
+    resizeMode: "cover",
   },
   container: {
     flex: 1,
@@ -76,7 +72,7 @@ const styles = StyleSheet.create({
   },
   appName: {
     fontSize: 56,
-    fontFamily: "Jolly Lodger", // Ensure the font is loaded in the app
+    fontFamily: "Jolly Lodger",
     color: "#D4E9F0",
     marginBottom: 30,
     textAlign: "center",
@@ -84,7 +80,7 @@ const styles = StyleSheet.create({
   deliveryGuyImage: {
     width: 200,
     height: 200,
-    marginBottom: 100, // Adjusted margin
+    marginBottom: 100,
   },
   loginText: {
     fontSize: 24,
@@ -94,18 +90,31 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 30,
   },
-  iconContainer: {
+  phoneInputContainer: {
     flexDirection: "row",
+    alignItems: "center",
+    width: 334,
+    height: 44,
+    borderBottomWidth: 1,
+    borderBottomColor: "#E1E1E1",
+    marginBottom: 30,
+  },
+  phoneCode: {
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 20,
+    paddingHorizontal: 12,
+    borderRightWidth: 1,
+    borderRightColor: "#E1E1E1",
   },
-  iconWrapper: {
-    marginHorizontal: 10,
+  phoneCodeText: {
+    fontSize: 18,
+    color: "#E1E1E1",
   },
-  icon: {
-    width: 80,
-    height: 80,
+  phoneNumberInput: {
+    flex: 1,
+    paddingHorizontal: 10,
+    fontSize: 18,
+    color: "#E1E1E1",
   },
   additionalText: {
     fontSize: 18,
@@ -114,15 +123,19 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
   },
-  noRegistrationText: {
-    fontSize: 26,
+  continueButton: {
+    width: 334,
+    height: 44,
+    borderRadius: 16,
+    backgroundColor: "#EFA52E",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  continueButtonText: {
+    fontSize: 18,
     fontFamily: "Jersey 25",
     fontWeight: "bold",
     color: "#FFFFFF",
-    textAlign: "center",
-    lineHeight: 26,
-    marginTop: 30,
-    textDecorationLine: "none",
-    opacity: 0.4,
   },
 });

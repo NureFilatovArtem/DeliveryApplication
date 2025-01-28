@@ -52,7 +52,7 @@ export default function LoginScreen({ navigation }) {
         </View>
 
         {/* Additional Text */}
-        <Text style={styles.additionalText}>
+        <Text style={styles.loginText}>
           OR CONTINUE WITH SOCIAL MEDIA
         </Text>
 
